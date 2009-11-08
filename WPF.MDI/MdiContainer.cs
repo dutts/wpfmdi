@@ -29,6 +29,12 @@ namespace WPF.MDI
             /// </summary>
             Aero
         }
+
+        #region Static Members
+
+        private static ResourceDictionary currentResourceDictionary;
+
+        #endregion
         
         #region Dependency Properties
 
@@ -290,16 +296,16 @@ namespace WPF.MDI
             MdiContainer mdiContainer = (MdiContainer)sender;
             ThemeType themeType = (ThemeType)e.NewValue;
 
+            if (currentResourceDictionary != null)
+                Application.Current.Resources.MergedDictionaries.Remove(currentResourceDictionary);
+
             switch (themeType)
             {
-                case ThemeType.Generic:
-                    Application.Current.Resources.Clear();
-                    break;
                 case ThemeType.Luna:
-                    Application.Current.Resources = (ResourceDictionary)XamlReader.Load(Application.GetResourceStream(new Uri(@"WPF.MDI;component/Themes/Luna.xaml", UriKind.Relative)).Stream);
+                    Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = (ResourceDictionary)XamlReader.Load(Application.GetResourceStream(new Uri(@"WPF.MDI;component/Themes/Luna.xaml", UriKind.Relative)).Stream));
                     break;
                 case ThemeType.Aero:
-                    Application.Current.Resources = (ResourceDictionary)XamlReader.Load(Application.GetResourceStream(new Uri(@"WPF.MDI;component/Themes/Aero.xaml", UriKind.Relative)).Stream);
+                    Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = (ResourceDictionary)XamlReader.Load(Application.GetResourceStream(new Uri(@"WPF.MDI;component/Themes/Aero.xaml", UriKind.Relative)).Stream));
                     break;
             }
         }
