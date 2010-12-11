@@ -197,7 +197,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Name="BaseBorder" CornerRadius="2" BorderThickness="1" BorderBrush="{StaticResource CloseBorderBrush}">
                         <Border Name="Border" CornerRadius="2" BorderThickness="1" Background="{StaticResource CloseSubBorderBackground}" BorderBrush="{StaticResource CloseSubBorderBrush}">
-                            <Image Width="11" Height="9" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/WPF.MDI;component/Themes/Resources/Aero/Close.png" />
+                            <Image Width="11" Height="9" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/WPF.MDI;component/Themes/Aero/Close.png" />
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -290,7 +290,7 @@
     
     <SolidColorBrush x:Key="ChildBackground" Color="#FFF0F0F0" />
     
-    <BitmapImage x:Key="RestoreImage" UriSource="/WPF.MDI;component/Themes/Resources/Aero/Restore.png" />
+    <BitmapImage x:Key="RestoreImage" UriSource="/WPF.MDI;component/Themes/Aero/Restore.png" />
 
     <SolidColorBrush x:Key="BackBorderMaximizedBrush" Color="#FF4A5764" />
     
@@ -305,9 +305,9 @@
 
     <SolidColorBrush x:Key="ContentMaximizedBorderBrush" Color="#FFA0A0A0" />
     
-    <BitmapImage x:Key="MaximizedMinimizeImage" UriSource="/WPF.MDI;component/Themes/Resources/Aero/MaximizedMinimize.png" />
-    <BitmapImage x:Key="MaximizedRestoreImage" UriSource="/WPF.MDI;component/Themes/Resources/Aero/MaximizedRestore.png" />
-    <BitmapImage x:Key="MaximizedCloseImage" UriSource="/WPF.MDI;component/Themes/Resources/Aero/MaximizedClose.png" />
+    <BitmapImage x:Key="MaximizedMinimizeImage" UriSource="/WPF.MDI;component/Themes/Aero/MaximizedMinimize.png" />
+    <BitmapImage x:Key="MaximizedRestoreImage" UriSource="/WPF.MDI;component/Themes/Aero/MaximizedRestore.png" />
+    <BitmapImage x:Key="MaximizedCloseImage" UriSource="/WPF.MDI;component/Themes/Aero/MaximizedClose.png" />
     
     <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
 
@@ -327,13 +327,15 @@
 
                             <Thumb Name="DragThumb" Height="30" VerticalAlignment="Top" Opacity="0" />
 
-                            <Button Name="CloseButton" Width="31" Height="17" Margin="0,9,8,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource CloseButtonStyle}" />
-                            <Button Name="MaximizeButton" Width="31" Height="17" Margin="0,9,41,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource WindowButtonStyle}">
-                                <Image Width="11" Height="9" Source="/WPF.MDI;component/Themes/Resources/Aero/Maximize.png" />
-                            </Button>
-                            <Button Name="MinimizeButton" Width="31" Height="17" Margin="0,9,74,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" Style="{DynamicResource WindowButtonStyle}">
-                                <Image Width="11" Height="5" Margin="0,3,0,0" Source="/WPF.MDI;component/Themes/Resources/Aero/Minimize.png" />
-                            </Button>
+                            <StackPanel Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,9,8,0" VerticalAlignment="Top" >
+                                <Button Name="MinimizeButton" Width="31" Height="17" Margin="0,0,2,0" RenderOptions.BitmapScalingMode="NearestNeighbor" Style="{DynamicResource WindowButtonStyle}">
+                                    <Image Width="11" Height="5" Margin="0,3,0,0" Source="/WPF.MDI;component/Themes/Aero/Minimize.png" />
+                                </Button>
+                                <Button Name="MaximizeButton" Width="31" Height="17" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                                    <Image Width="11" Height="9" Source="/WPF.MDI;component/Themes/Aero/Maximize.png" />
+                                </Button>
+                                <Button Name="CloseButton" Width="31" Height="17" Style="{DynamicResource CloseButtonStyle}" />
+                            </StackPanel>
 
                             <Grid Name="HeaderContent" Height="28" Margin="6,0,109,0" VerticalAlignment="Top" IsHitTestVisible="False">
                                 <Grid.ColumnDefinitions>
@@ -386,9 +388,7 @@
                             <Setter Property="Width" Value="160" />
                             <Setter Property="Height" Value="29" />
                             <Setter Property="Resizable" Value="False" />
-                            <Setter TargetName="CloseButton" Property="Margin" Value="0,5,5,0" />
-                            <Setter TargetName="MaximizeButton" Property="Margin" Value="0,5,38,0" />
-                            <Setter TargetName="MinimizeButton" Property="Margin" Value="0,5,71,0" />
+                            <Setter TargetName="ButtonsPanel" Property="Margin" Value="0,5,5,0" />
                             <Setter TargetName="IconImage" Property="Margin" Value="2,0,0,0" />
                             <Setter TargetName="Header" Property="Margin" Value="4,6,0,0" />
                             <Setter TargetName="MinimizeButton" Property="Template">
@@ -428,7 +428,7 @@
                             <Setter TargetName="HighlightBackground" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="ContentBorder" Property="BorderThickness" Value="1" />
                             <Setter TargetName="ContentBorder" Property="BorderBrush" Value="{StaticResource ContentMaximizedBorderBrush}" />
-                            <Setter TargetName="ContentBorder" Property="Margin" Value="0,20,0,0" />
+                            <Setter TargetName="ContentBorder" Property="Margin" Value="0,0,0,0" /> <!-- HERE -->
                             <Setter TargetName="HeaderContent" Property="Height" Value="20" />
                             <Setter TargetName="LeftBorder" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="TopBorder" Property="Visibility" Value="Hidden" />
@@ -436,9 +436,9 @@
                             <Setter TargetName="BottomBorder" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="Header" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="IconImage" Property="Margin" Value="2,0,0,0" />
-                            <Setter TargetName="MinimizeButton" Property="Margin" Value="0,1,39,0" />
-                            <Setter TargetName="MaximizeButton" Property="Margin" Value="0,1,20,0" />
-                            <Setter TargetName="CloseButton" Property="Margin" Value="0,1,1,0" />
+                            <Setter TargetName="MinimizeButton" Property="Margin" Value="20,1,1,1" />
+                            <Setter TargetName="MaximizeButton" Property="Margin" Value="1" />
+                            <Setter TargetName="CloseButton" Property="Margin" Value="1" />
                             <Setter TargetName="MinimizeButton" Property="Width" Value="18" />
                             <Setter TargetName="MaximizeButton" Property="Width" Value="18" />
                             <Setter TargetName="CloseButton" Property="Width" Value="18" />

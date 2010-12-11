@@ -4,19 +4,24 @@
     xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
     Title="WPF.MDI Example" Height="362" Width="684" WindowState="Maximized">
     <DockPanel>
-        <Menu Height="23" DockPanel.Dock="Top">
-            <MenuItem Header="Windows">
-                <MenuItem Header="Add Window" Name="AddWindow" Click="AddWindow_Click" />
-            </MenuItem>
-            <MenuItem Header="Theme">
-                <MenuItem Header="Generic" Name="Generic" ToolTip="Generic Visual Studio designer theme" Click="Generic_Click" />
-                <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
-                <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" IsChecked="True" />
-            </MenuItem>
-        </Menu>
-        <mdi:MdiContainer Name="Container" Theme="Aero">
+        <mdi:MdiContainer Name="Container">
+            <mdi:MdiContainer.Menu>
+                <Menu DockPanel.Dock="Top">
+                    <MenuItem Header="Add">
+                        <MenuItem Header="Normal Window" Click="AddWindow_Click" />
+                        <MenuItem Header="Fixed Window" Click="AddFixedWindow_Click" />
+                        <MenuItem Header="Scroll Window" Click="AddScrollWindow_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Theme">
+                        <MenuItem Header="Generic" Name="Generic" ToolTip="Generic Visual Studio designer theme" Click="Generic_Click" />
+                        <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
+                        <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" />
+                </Menu>
+            </mdi:MdiContainer.Menu>
             <mdi:MdiChild Title="Empty Window Using XAML" />
-            <mdi:MdiChild Name="Window1" Title="Window Using XAML" Icon="OriginalLogo.png">
+            <mdi:MdiChild Name="Window1" Title="Window Using XAML" Position="20,15" Icon="OriginalLogo.png">
                 <StackPanel>
                     <Button Name="DisableMinimize" Height="20" Click="DisableMinimize_Click">Disable Minimize</Button>
                     <Button Name="EnableMinimize" Height="20" Click="EnableMinimize_Click">Enable Minimize</Button>

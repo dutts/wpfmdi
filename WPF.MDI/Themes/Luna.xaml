@@ -31,66 +31,66 @@
     <SolidColorBrush x:Key="NearBorderBrush" Color="White" />
     <SolidColorBrush x:Key="FarBorderBrush" Color="#FF3FCEF2" />
 
-    <BitmapImage x:Key="TopLeftFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopLeftFocused.png" />
-    <BitmapImage x:Key="TopLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopLeftUnfocused.png" />
+    <BitmapImage x:Key="TopLeftFocused" UriSource="/WPF.MDI;component/Themes/Luna/TopLeftFocused.png" />
+    <BitmapImage x:Key="TopLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/TopLeftUnfocused.png" />
 
-    <BitmapImage x:Key="TopMiddleFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopMiddleFocused.png" />
-    <BitmapImage x:Key="TopMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopMiddleUnfocused.png" />
+    <BitmapImage x:Key="TopMiddleFocused" UriSource="/WPF.MDI;component/Themes/Luna/TopMiddleFocused.png" />
+    <BitmapImage x:Key="TopMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/TopMiddleUnfocused.png" />
 
-    <BitmapImage x:Key="TopRightFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopRightFocused.png" />
-    <BitmapImage x:Key="TopRightUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/TopRightUnfocused.png" />
+    <BitmapImage x:Key="TopRightFocused" UriSource="/WPF.MDI;component/Themes/Luna/TopRightFocused.png" />
+    <BitmapImage x:Key="TopRightUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/TopRightUnfocused.png" />
 
-    <BitmapImage x:Key="LeftFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/LeftFocused.png" />
-    <BitmapImage x:Key="LeftUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/LeftUnfocused.png" />
+    <BitmapImage x:Key="LeftFocused" UriSource="/WPF.MDI;component/Themes/Luna/LeftFocused.png" />
+    <BitmapImage x:Key="LeftUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/LeftUnfocused.png" />
 
-    <BitmapImage x:Key="RightFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RightFocused.png" />
-    <BitmapImage x:Key="RightUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RightUnfocused.png" />
+    <BitmapImage x:Key="RightFocused" UriSource="/WPF.MDI;component/Themes/Luna/RightFocused.png" />
+    <BitmapImage x:Key="RightUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/RightUnfocused.png" />
 
-    <BitmapImage x:Key="BottomLeftFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomLeftFocused.png" />
-    <BitmapImage x:Key="BottomLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomLeftUnfocused.png" />
+    <BitmapImage x:Key="BottomLeftFocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomLeftFocused.png" />
+    <BitmapImage x:Key="BottomLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomLeftUnfocused.png" />
 
-    <BitmapImage x:Key="BottomMiddleFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomMiddleFocused.png" />
-    <BitmapImage x:Key="BottomMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomMiddleUnfocused.png" />
+    <BitmapImage x:Key="BottomMiddleFocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomMiddleFocused.png" />
+    <BitmapImage x:Key="BottomMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomMiddleUnfocused.png" />
 
-    <BitmapImage x:Key="BottomRightFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomRightFocused.png" />
-    <BitmapImage x:Key="BottomRightUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/BottomRightUnfocused.png" />
+    <BitmapImage x:Key="BottomRightFocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomRightFocused.png" />
+    <BitmapImage x:Key="BottomRightUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/BottomRightUnfocused.png" />
 
-    <BitmapImage x:Key="CloseNormalFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/CloseNormalFocused.png" />
-    <BitmapImage x:Key="CloseNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/CloseNormalUnfocused.png" />
-    <BitmapImage x:Key="CloseOver" UriSource="/WPF.MDI;component/Themes/Resources/Luna/CloseOver.png" />
-    <BitmapImage x:Key="CloseDown" UriSource="/WPF.MDI;component/Themes/Resources/Luna/CloseDown.png" />
+    <BitmapImage x:Key="CloseNormalFocused" UriSource="/WPF.MDI;component/Themes/Luna/CloseNormalFocused.png" />
+    <BitmapImage x:Key="CloseNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/CloseNormalUnfocused.png" />
+    <BitmapImage x:Key="CloseOver" UriSource="/WPF.MDI;component/Themes/Luna/CloseOver.png" />
+    <BitmapImage x:Key="CloseDown" UriSource="/WPF.MDI;component/Themes/Luna/CloseDown.png" />
 
-    <BitmapImage x:Key="MaximizeNormalFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeNormalFocused.png" />
-    <BitmapImage x:Key="MaximizeNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeNormalUnfocused.png" />
-    <BitmapImage x:Key="MaximizeDisabledFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeDisabledFocused.png" />
-    <BitmapImage x:Key="MaximizeDisabledUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeDisabledUnfocused.png" />
-    <BitmapImage x:Key="MaximizeOver" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeOver.png" />
-    <BitmapImage x:Key="MaximizeDown" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizeDown.png" />
+    <BitmapImage x:Key="MaximizeNormalFocused" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeNormalFocused.png" />
+    <BitmapImage x:Key="MaximizeNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeNormalUnfocused.png" />
+    <BitmapImage x:Key="MaximizeDisabledFocused" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeDisabledFocused.png" />
+    <BitmapImage x:Key="MaximizeDisabledUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeDisabledUnfocused.png" />
+    <BitmapImage x:Key="MaximizeOver" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeOver.png" />
+    <BitmapImage x:Key="MaximizeDown" UriSource="/WPF.MDI;component/Themes/Luna/MaximizeDown.png" />
 
-    <BitmapImage x:Key="MinimizeNormalFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeNormalFocused.png" />
-    <BitmapImage x:Key="MinimizeNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeNormalUnfocused.png" />
-    <BitmapImage x:Key="MinimizeDisabledFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeDisabledFocused.png" />
-    <BitmapImage x:Key="MinimizeDisabledUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeDisabledUnfocused.png" />
-    <BitmapImage x:Key="MinimizeOver" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeOver.png" />
-    <BitmapImage x:Key="MinimizeDown" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizeDown.png" />
+    <BitmapImage x:Key="MinimizeNormalFocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeNormalFocused.png" />
+    <BitmapImage x:Key="MinimizeNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeNormalUnfocused.png" />
+    <BitmapImage x:Key="MinimizeDisabledFocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeDisabledFocused.png" />
+    <BitmapImage x:Key="MinimizeDisabledUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeDisabledUnfocused.png" />
+    <BitmapImage x:Key="MinimizeOver" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeOver.png" />
+    <BitmapImage x:Key="MinimizeDown" UriSource="/WPF.MDI;component/Themes/Luna/MinimizeDown.png" />
 
-    <BitmapImage x:Key="RestoreNormalFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RestoreNormalFocused.png" />
-    <BitmapImage x:Key="RestoreNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RestoreNormalUnfocused.png" />
-    <BitmapImage x:Key="RestoreOver" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RestoreOver.png" />
-    <BitmapImage x:Key="RestoreDown" UriSource="/WPF.MDI;component/Themes/Resources/Luna/RestoreDown.png" />
+    <BitmapImage x:Key="RestoreNormalFocused" UriSource="/WPF.MDI;component/Themes/Luna/RestoreNormalFocused.png" />
+    <BitmapImage x:Key="RestoreNormalUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/RestoreNormalUnfocused.png" />
+    <BitmapImage x:Key="RestoreOver" UriSource="/WPF.MDI;component/Themes/Luna/RestoreOver.png" />
+    <BitmapImage x:Key="RestoreDown" UriSource="/WPF.MDI;component/Themes/Luna/RestoreDown.png" />
 
     <SolidColorBrush x:Key="ChildBackgroundBrush" Color="#FFEFEBDE" />
 
-    <BitmapImage x:Key="MinimizedTopLeftFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedLeftFocused.png" />
-    <BitmapImage x:Key="MinimizedTopMiddleFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedMiddleFocused.png" />
-    <BitmapImage x:Key="MinimizedTopRightFocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedRightFocused.png" />
-    <BitmapImage x:Key="MinimizedTopLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedLeftUnfocused.png" />
-    <BitmapImage x:Key="MinimizedTopMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedMiddleUnfocused.png" />
-    <BitmapImage x:Key="MinimizedTopRightUnfocused" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MinimizedRightUnfocused.png" />
+    <BitmapImage x:Key="MinimizedTopLeftFocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedLeftFocused.png" />
+    <BitmapImage x:Key="MinimizedTopMiddleFocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedMiddleFocused.png" />
+    <BitmapImage x:Key="MinimizedTopRightFocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedRightFocused.png" />
+    <BitmapImage x:Key="MinimizedTopLeftUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedLeftUnfocused.png" />
+    <BitmapImage x:Key="MinimizedTopMiddleUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedMiddleUnfocused.png" />
+    <BitmapImage x:Key="MinimizedTopRightUnfocused" UriSource="/WPF.MDI;component/Themes/Luna/MinimizedRightUnfocused.png" />
 
-    <BitmapImage x:Key="MaximizedMinimizeImage" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizedMinimize.png" />
-    <BitmapImage x:Key="MaximizedRestoreImage" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizedRestore.png" />
-    <BitmapImage x:Key="MaximizedCloseImage" UriSource="/WPF.MDI;component/Themes/Resources/Luna/MaximizedClose.png" />
+    <BitmapImage x:Key="MaximizedMinimizeImage" UriSource="/WPF.MDI;component/Themes/Luna/MaximizedMinimize.png" />
+    <BitmapImage x:Key="MaximizedRestoreImage" UriSource="/WPF.MDI;component/Themes/Luna/MaximizedRestore.png" />
+    <BitmapImage x:Key="MaximizedCloseImage" UriSource="/WPF.MDI;component/Themes/Luna/MaximizedClose.png" />
 
     <SolidColorBrush x:Key="ContentHostBackgroundBrush" Color="#FFADAA9C" />
     <SolidColorBrush x:Key="TopBackgroundBrush" Color="#FFEFEBDE" />
@@ -123,15 +123,17 @@
 
                         <Thumb Opacity="0" Height="30" VerticalAlignment="Top" Name="DragThumb" />                        
                         
-                        <Button Name="CloseButton" Width="21" Height="21" Margin="0,5,6,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource WindowButtonStyle}">
-                            <Image Width="21" Height="21" Source="{StaticResource CloseNormalFocused}" />
-                        </Button>
-                        <Button Name="MaximizeButton" Height="21" Width="21" Margin="0,5,29,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource WindowButtonStyle}">
-                            <Image Width="21" Height="21" Source="{StaticResource MaximizeNormalFocused}"/>
-                        </Button>
-                        <Button Name="MinimizeButton" Height="21" Width="21" Margin="0,5,52,0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource WindowButtonStyle}">
-                            <Image Width="21" Height="21" Source="{StaticResource MinimizeNormalFocused}" />
-                        </Button>
+                        <StackPanel Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,6,0">
+                            <Button Name="MinimizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                                <Image Width="21" Height="21" Source="{StaticResource MinimizeNormalFocused}" />
+                            </Button>
+                            <Button Name="MaximizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                                <Image Width="21" Height="21" Source="{StaticResource MaximizeNormalFocused}"/>
+                            </Button>
+                            <Button Name="CloseButton" Width="21" Height="21" Style="{DynamicResource WindowButtonStyle}">
+                                <Image Width="21" Height="21" Source="{StaticResource CloseNormalFocused}" />
+                            </Button>
+                        </StackPanel>
 
                         <Grid Name="HeaderContent" Height="28" Margin="6,0,78,0" VerticalAlignment="Top" IsHitTestVisible="False">
                             <Grid.ColumnDefinitions>
@@ -412,7 +414,7 @@
                             <Setter TargetName="Header" Property="Visibility" Value="Hidden" />
                             <Setter TargetName="HeaderContent" Property="Height" Value="21" />
                             <Setter TargetName="IconImage" Property="Margin" Value="2,0,0,0" />
-                            <Setter TargetName="ContentHost" Property="Margin" Value="0,21,0,0" />
+                            <Setter TargetName="ContentHost" Property="Margin" Value="0,0,0,0" /> <!-- HERE -->
                             <Setter TargetName="ContentHost" Property="BorderBrush" Value="{StaticResource ContentHostBackgroundBrush}" />
                             <Setter TargetName="ContentHost" Property="BorderThickness" Value="1" />
                             <Setter TargetName="TopBackground" Property="Background" Value="{StaticResource TopBackgroundBrush}" />
@@ -420,9 +422,9 @@
                             <Setter TargetName="TopBackground" Property="BorderThickness" Value="0,0,0,1" />
                             <Setter TargetName="DragThumb" Property="IsHitTestVisible" Value="False" />
                             <Setter Property="Resizable" Value="False" />
-                            <Setter TargetName="MinimizeButton" Property="Margin" Value="0,1,36,0" />
-                            <Setter TargetName="MaximizeButton" Property="Margin" Value="0,1,18,0" />
-                            <Setter TargetName="CloseButton" Property="Margin" Value="0,1,0,0" />
+                            <Setter TargetName="MinimizeButton" Property="Margin" Value="20,1,1,1" />
+                            <Setter TargetName="MaximizeButton" Property="Margin" Value="1" />
+                            <Setter TargetName="CloseButton" Property="Margin" Value="1" />
                             <Setter TargetName="MinimizeButton" Property="Width" Value="18" />
                             <Setter TargetName="MaximizeButton" Property="Width" Value="18" />
                             <Setter TargetName="CloseButton" Property="Width" Value="18" />

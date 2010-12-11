@@ -1,11 +1,23 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.MDI", "WPF.MDI\WPF.MDI.csproj", "{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{1F896089-1817-4D8A-A352-83B13264FE75}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs05
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WPF.MDI\\WPF.MDI.csproj
+		SccProjectName1 = WPF.MDI
+		SccLocalPath1 = WPF.MDI
+		SccProjectUniqueName2 = Example\\Example.csproj
+		SccProjectName2 = Example
+		SccLocalPath2 = Example
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
