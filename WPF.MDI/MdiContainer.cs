@@ -505,7 +505,7 @@ namespace WPF.MDI
 				int capacity = Convert.ToInt32(mdiContainer.ActualWidth) / MdiChild.MinimizedWidth,
 					row = i / capacity + 1,
 					col = i % capacity;
-				containerHeight = containerHeight - MdiChild.MinimizedHeight * row;
+				containerHeight = mdiContainer.InnerHeight - MdiChild.MinimizedHeight * row;
 				double newLeft = MdiChild.MinimizedWidth * col;
 				mdiChild.Position = new Point(newLeft, containerHeight);
 			}
