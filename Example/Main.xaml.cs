@@ -18,7 +18,9 @@ namespace Example
 		public Main()
 		{
 			InitializeComponent();
+			_original_title = Title;
 			Container.Children.CollectionChanged += (o, e) => Menu_RefreshWindows();
+			Container.MdiChildTitleChanged += Container_MdiChildTitleChanged;
 
 			Container.Children.Add(new MdiChild
 			{
@@ -32,9 +34,23 @@ namespace Example
 				Content = new ExampleControl(),
 				Width = 714,
 				Height = 734,
-				Position = new Point(200, 30)
+				Position = new Point(300, 80)
 			});
 		}
+
+		#region Mdi-like title
+
+		string _original_title;
+
+		void Container_MdiChildTitleChanged(object sender, RoutedEventArgs e)
+		{
+			if (Container.ActiveMdiChild != null && Container.ActiveMdiChild.WindowState == WindowState.Maximized)
+				Title = _original_title + " - [" + Container.ActiveMdiChild.Title + "]";
+			else
+				Title = _original_title;
+		}
+
+		#endregion
 
 		#region Theme Menu Events
 

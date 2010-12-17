@@ -7,6 +7,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows.Data;
 
 namespace WPF.MDI
 {
@@ -54,6 +55,22 @@ namespace WPF.MDI
 			DependencyProperty.Register("MdiLayout", typeof(MdiLayout), typeof(MdiContainer),
 			new UIPropertyMetadata(MdiLayout.ArrangeIcons, new PropertyChangedCallback(MdiLayoutValueChanged)));
 
+		/// <summary>
+		/// Identifies the WPF.MDI.MdiContainer.ActiveMdiChild dependency property.
+		/// </summary>
+		/// <returns>The identifier for the WPF.MDI.ActiveMdiChild.MdiLayout property.</returns>
+		public static readonly DependencyProperty ActiveMdiChildProperty =
+			DependencyProperty.Register("ActiveMdiChild", typeof(MdiChild), typeof(MdiContainer),
+			new UIPropertyMetadata(null, new PropertyChangedCallback(ActiveMdiChildValueChanged)));
+
+		/// <summary>
+		/// Identifies the WPF.MDI.MdiContainer.Buttons dependency property.
+		/// </summary>
+		/// <returns>The identifier for the WPF.MDI.ActiveMdiChild.Buttons property.</returns>
+		internal static readonly DependencyProperty ButtonsProperty =
+			DependencyProperty.Register("Buttons", typeof(Panel), typeof(MdiContainer),
+			new UIPropertyMetadata(null, new PropertyChangedCallback(ButtonsValueChanged)));
+
 		#endregion
 
 		#region Property Accessors
@@ -75,7 +92,7 @@ namespace WPF.MDI
 		/// Window buttons in maximized mode will be on the same level.
 		/// This is a dependency property.
 		/// </summary>
-		/// <value>The container theme.</value>
+		/// <value>Element to be placed in menu row.</value>
 		public UIElement Menu
 		{
 			get { return (UIElement)GetValue(MenuProperty); }
@@ -87,11 +104,32 @@ namespace WPF.MDI
 		/// Window buttons in maximized mode will be on the same level.
 		/// This is a dependency property.
 		/// </summary>
-		/// <value>The container theme.</value>
+		/// <value>Mdi layout.</value>
 		public MdiLayout MdiLayout
 		{
 			get { return (MdiLayout)GetValue(MdiLayoutProperty); }
 			set { SetValue(MdiLayoutProperty, value); }
+		}
+		
+		/// <summary>
+		/// Gets active MDI child. Null if no one.
+		/// This is a dependency property.
+		/// </summary>
+		/// <value>Active Mdi Child.</value>
+		public MdiChild ActiveMdiChild
+		{
+			get { return (MdiChild)GetValue(ActiveMdiChildProperty); }
+			internal set { SetValue(ActiveMdiChildProperty, value); }
+		}
+
+		/// <summary>
+		/// Buttons on top; null for non-maximized mode;
+		/// </summary>
+		/// <value>Buttons panel.</value>
+		internal Panel Buttons
+		{
+			get { return (Panel)GetValue(ButtonsProperty); }
+			set { SetValue(ButtonsProperty, value); }
 		}
 
 		/// <summary>
@@ -134,11 +172,6 @@ namespace WPF.MDI
 		/// </summary>
 		private double _windowOffset;
 
-		/// <summary>
-		/// Allows setting WindowState of all windows to Maximized.
-		/// </summary>
-		internal bool AllowWindowStateMax;
-
 		#endregion
 
 		#region Constructor
@@ -167,8 +200,7 @@ namespace WPF.MDI
 			_topPanel.Children.Add(new UIElement());
 			gr.Children.Add(_topPanel);
 
-			ScrollViewer sv = new ScrollViewer
-			{
+			ScrollViewer sv = new ScrollViewer {
 				Content = _windowCanvas = new Canvas(),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
 				VerticalScrollBarVisibility = ScrollBarVisibility.Auto
@@ -185,7 +217,6 @@ namespace WPF.MDI
 			Loaded += MdiContainer_Loaded;
 			SizeChanged += MdiContainer_SizeChanged;
 			KeyDown += new System.Windows.Input.KeyEventHandler(MdiContainer_KeyDown);
-			AllowWindowStateMax = true;
 		}
 
 		static void MdiContainer_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -244,20 +275,9 @@ namespace WPF.MDI
 		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
 		private void MdiContainer_Activated(object sender, EventArgs e)
 		{
-			if (Children.Count == 0)
+			if (ActiveMdiChild == null)
 				return;
-
-			int index = 0, maxZindex = Panel.GetZIndex(Children[0]);
-			for (int i = 0; i < Children.Count; i++)
-			{
-				int zindex = Panel.GetZIndex(Children[i]);
-				if (zindex > maxZindex)
-				{
-					maxZindex = zindex;
-					index = i;
-				}
-			}
-			Children[index].Focused = true;
+			ActiveMdiChild.Focused = true;
 		}
 
 		/// <summary>
@@ -270,8 +290,9 @@ namespace WPF.MDI
 			if (Children.Count == 0)
 				return;
 
-			for (int i = 0; i < _windowCanvas.Children.Count; i++)
-				Children[i].Focused = false;
+			for (int i = 0; i < Children.Count; i++)
+				if (Children[i].WindowState != WindowState.Maximized)
+					Children[i].Focused = false;
 		}
 
 		/// <summary>
@@ -315,15 +336,15 @@ namespace WPF.MDI
 				case NotifyCollectionChangedAction.Add:
 					{
 						MdiChild mdiChild = Children[e.NewStartingIndex],
-							topChild = GetTopChild();
+							topChild = ActiveMdiChild;
 
 						if (topChild != null && topChild.WindowState == WindowState.Maximized)
-							mdiChild.Loaded += (s,a) => mdiChild.WindowState = WindowState.Maximized;
+							mdiChild.Loaded += (s, a) => mdiChild.WindowState = WindowState.Maximized;
+						mdiChild.Loaded += (s, a) => ActiveMdiChild = mdiChild;
 
-						mdiChild.Position = new Point(_windowOffset, _windowOffset);
-						
+						if (mdiChild.Position.X < 0 || mdiChild.Position.Y < 0)
+							mdiChild.Position = new Point(_windowOffset, _windowOffset);
 						_windowCanvas.Children.Add(mdiChild);
-						mdiChild.Loaded += (s, a) => Focus(mdiChild);
 
 						_windowOffset += WindowOffset;
 						if (_windowOffset + mdiChild.Width > ActualWidth)
@@ -334,8 +355,13 @@ namespace WPF.MDI
 					break;
 				case NotifyCollectionChangedAction.Remove:
 					{
-						_windowCanvas.Children.Remove((MdiChild)e.OldItems[0]);
-						Focus(GetTopChild());
+						MdiChild oldChild = (MdiChild)e.OldItems[0];
+						_windowCanvas.Children.Remove(oldChild);
+						MdiChild newChild = GetTopChild();
+
+						ActiveMdiChild = newChild;
+						if (newChild != null && oldChild.WindowState == WindowState.Maximized)
+							newChild.WindowState = WindowState.Maximized;
 					}
 					break;
 				case NotifyCollectionChangedAction.Reset:
@@ -346,33 +372,6 @@ namespace WPF.MDI
 		}
 
 		#endregion
-		
-		/// <summary>
-		/// Focuses a child and brings it into view.
-		/// </summary>
-		/// <param name="mdiChild">The MDI child.</param>
-		internal static void Focus(MdiChild mdiChild)
-		{
-			if (mdiChild == null)
-				return;
-
-			mdiChild.Container._buttons.Child = mdiChild.Buttons;
-
-			int maxZindex = 0;
-			for (int i = 0; i < mdiChild.Container.Children.Count; i++)
-			{
-				int zindex = Panel.GetZIndex(mdiChild.Container.Children[i]);
-				if (zindex > maxZindex)
-					maxZindex = zindex;
-				if (mdiChild.Container.Children[i] != mdiChild)
-				{
-					mdiChild.Container.Children[i].Focused = false;
-				}
-				else
-					mdiChild.Focused = true;
-			}
-			Panel.SetZIndex(mdiChild, maxZindex + 1);
-		}
 
 		/// <summary>
 		/// Invalidates the size checking to see if the furthest
@@ -407,20 +406,20 @@ namespace WPF.MDI
 		/// </summary>
 		internal MdiChild GetTopChild()
 		{
-			if (_windowCanvas.Children.Count < 1)
+			if (Children.Count < 1)
 				return null;
 
-			int index = 0, maxZindex = Panel.GetZIndex(_windowCanvas.Children[0]);
-			for (int i = 1, zindex; i < _windowCanvas.Children.Count; i++)
+			int index = 0, maxZindex = Panel.GetZIndex(Children[0]);
+			for (int i = 1, zindex; i < Children.Count; i++)
 			{
-				zindex = Panel.GetZIndex(_windowCanvas.Children[i]);
+				zindex = Panel.GetZIndex(Children[i]);
 				if (zindex > maxZindex)
 				{
 					maxZindex = zindex;
 					index = i;
 				}
 			}
-			return (MdiChild)_windowCanvas.Children[index];
+			return Children[index];
 		}
 
 		#region Dependency Property Events
@@ -435,6 +434,10 @@ namespace WPF.MDI
 			MdiContainer mdiContainer = (MdiContainer)sender;
 			ThemeType themeType = (ThemeType)e.NewValue;
 
+			bool max_mode = mdiContainer.ActiveMdiChild != null && mdiContainer.ActiveMdiChild.WindowState == WindowState.Maximized;
+			if (max_mode)
+				mdiContainer.ActiveMdiChild.WindowState = WindowState.Normal;
+
 			if (currentResourceDictionary != null)
 				Application.Current.Resources.MergedDictionaries.Remove(currentResourceDictionary);
 
@@ -447,6 +450,9 @@ namespace WPF.MDI
 					Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = new ResourceDictionary { Source = new Uri(@"/WPF.MDI;component/Themes/Aero.xaml", UriKind.Relative) });
 					break;
 			}
+
+			//if (max_mode)
+			//    mdiContainer.ActiveMdiChild.WindowState = WindowState.Maximized;
 		}
 
 		/// <summary>
@@ -620,6 +626,55 @@ namespace WPF.MDI
 			mdiContainer.MdiLayout = MdiLayout.ArrangeIcons;
 		}
 
+		/// <summary>
+		/// Dependency property event once the focused mdi child has changed.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+		private static void ActiveMdiChildValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+			MdiContainer mdiContainer = (MdiContainer)sender;
+			MdiChild newChild = (MdiChild)e.NewValue,
+				oldChild = (MdiChild)e.OldValue;
+
+			if (newChild == null || newChild == oldChild)
+				return;
+
+			if (oldChild != null &&  oldChild.WindowState == WindowState.Maximized)
+				newChild.WindowState = WindowState.Maximized;
+
+			int maxZindex = 0;
+			for (int i = 0; i < mdiContainer.Children.Count; i++)
+			{
+				int zindex = Panel.GetZIndex(mdiContainer.Children[i]);
+				if (zindex > maxZindex)
+					maxZindex = zindex;
+				if (mdiContainer.Children[i] != newChild)
+					mdiContainer.Children[i].Focused = false;
+				else
+					newChild.Focused = true;
+			}
+
+			Panel.SetZIndex(newChild, maxZindex + 1);
+
+			if (mdiContainer.MdiChildTitleChanged != null)
+				mdiContainer.MdiChildTitleChanged(mdiContainer, new RoutedEventArgs());
+		}
+
+		/// <summary>
+		/// Dependency property event once the MdiChild's Buttons property has changed.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+		private static void ButtonsValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+			MdiContainer mdiContainer = (MdiContainer)sender;
+			Panel panel = (Panel)e.NewValue;
+
+			mdiContainer._buttons.Child = panel;
+			mdiContainer.MdiChildTitleChanged(mdiContainer, new RoutedEventArgs());
+		}
+
 		#endregion
 
 		#region Nested MdiChild comparerer
@@ -635,6 +690,12 @@ namespace WPF.MDI
 
 			#endregion
 		}
+
 		#endregion
+
+		/// <summary>
+		/// Occurs when a multiple-document interface (MDI) child form is activated or closed within an MDI application.
+		/// </summary>
+		public event RoutedEventHandler MdiChildTitleChanged;
 	}
 }
