@@ -208,6 +208,26 @@ namespace Example
 			Window1.MaximizeBox = true;
 		}
 
+        /// <summary>
+        /// Handles the Click event of the DisableClose control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void DisableClose_Click(object sender, RoutedEventArgs e)
+        {
+            Window1.CloseBox = false;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the EnableClose control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void EnableClose_Click(object sender, RoutedEventArgs e)
+        {
+            Window1.CloseBox = true;
+        }
+
 		/// <summary>
 		/// Handles the Click event of the ShowIcon control.
 		/// </summary>

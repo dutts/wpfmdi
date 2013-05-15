@@ -90,6 +90,14 @@ namespace WPF.MDI
 			DependencyProperty.Register("MaximizeBox", typeof(bool), typeof(MdiChild),
 			new UIPropertyMetadata(true, new PropertyChangedCallback(MaximizeBoxValueChanged)));
 
+        /// <summary>
+        /// Identifies the WPF.MDI.MdiChild.CloseBoxProperty dependency property.
+        /// </summary>
+        /// <returns>The identifier for the WPF.MDI.MdiChild.CloseBoxProperty property.</returns>
+        public static readonly DependencyProperty CloseBoxProperty =
+            DependencyProperty.Register("CloseBox", typeof(bool), typeof(MdiChild),
+            new UIPropertyMetadata(true, new PropertyChangedCallback(CloseBoxValueChanged)));
+
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiChild.WindowStateProperty dependency property.
 		/// </summary>
@@ -224,6 +232,17 @@ namespace WPF.MDI
 			get { return (bool)GetValue(MaximizeBoxProperty); }
 			set { SetValue(MaximizeBoxProperty, value); }
 		}
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to [show the close box button].
+        /// This is a dependency property.
+        /// </summary>
+        /// <value><c>true</c> if [show the close box button]; otherwise, <c>false</c>.</value>
+        public bool CloseBox
+        {
+            get { return (bool)GetValue(CloseBoxProperty); }
+            set { SetValue(CloseBoxProperty, value); }
+        }
 
 		/// <summary>
 		/// Gets or sets the state of the window.
@@ -836,6 +855,28 @@ namespace WPF.MDI
 				}
 			}
 		}
+
+        /// <summary>
+        /// Dependency property event once the close box value has changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void CloseBoxValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            MdiChild mdiChild = (MdiChild)sender;
+            bool visible = (bool)e.NewValue;
+
+            if (visible)
+            {
+                if ((mdiChild.closeButton != null) && (mdiChild.closeButton.Visibility != Visibility.Visible))
+                        mdiChild.closeButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                if ((mdiChild.closeButton != null) && (mdiChild.closeButton.Visibility == Visibility.Visible))
+                    mdiChild.closeButton.Visibility = Visibility.Hidden;
+            }
+        }
 
 		/// <summary>
 		/// Dependency property event once the windows state value has changed.

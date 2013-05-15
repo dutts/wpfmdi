@@ -27,6 +27,8 @@
                     <Button Name="EnableMinimize" Height="20" Click="EnableMinimize_Click">Enable Minimize</Button>
                     <Button Name="DisableMaximize" Height="20" Click="DisableMaximize_Click">Disable Maximize</Button>
                     <Button Name="EnableMaximize" Height="20" Click="EnableMaximize_Click">Enable Maximize</Button>
+                    <Button Name="DisableClose" Height="20" Click="DisableClose_Click">Disable Close</Button>
+                    <Button Name="EnableClose" Height="20" Click="EnableClose_Click">Enable Close</Button>
                     <Button Name="ShowIcon" Height="20" Click="ShowIcon_Click">Show Icon</Button>
                     <Button Name="HideIcon" Height="20" Click="HideIcon_Click">Hide Icon</Button>
                 </StackPanel>
