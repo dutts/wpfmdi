@@ -672,7 +672,9 @@ namespace WPF.MDI
 			Panel panel = (Panel)e.NewValue;
 
 			mdiContainer._buttons.Child = panel;
-			mdiContainer.MdiChildTitleChanged(mdiContainer, new RoutedEventArgs());
+
+            if (mdiContainer.MdiChildTitleChanged != null)
+                mdiContainer.MdiChildTitleChanged(mdiContainer, new RoutedEventArgs());
 		}
 
 		#endregion
