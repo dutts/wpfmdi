@@ -532,6 +532,7 @@ namespace WPF.MDI
 
 			MinimizeBoxValueChanged(this, new DependencyPropertyChangedEventArgs(MinimizeBoxProperty, true, MinimizeBox));
 			MaximizeBoxValueChanged(this, new DependencyPropertyChangedEventArgs(MaximizeBoxProperty, true, MaximizeBox));
+            CloseBoxValueChanged(this, new DependencyPropertyChangedEventArgs(CloseBoxProperty, true, CloseBox));
 		}
 
 		/// <summary>
@@ -874,7 +875,7 @@ namespace WPF.MDI
             else
             {
                 if ((mdiChild.closeButton != null) && (mdiChild.closeButton.Visibility == Visibility.Visible))
-                    mdiChild.closeButton.Visibility = Visibility.Hidden;
+                    mdiChild.closeButton.Visibility = Visibility.Collapsed;
             }
         }
 
