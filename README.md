@@ -1,12 +1,12 @@
-#WPF Multiple Document Interface (MDI)
+# WPF Multiple Document Interface (MDI)
 
-##Project Description
+## Project Description
 A library to add the traditional Windows Forms Multiple Document Interface (MDI) features to WPF. The aim is to resemble the original as much as possible.
 
-##Themes
+## Themes
 WPF MDI includes two themes, Luna (XP) and Aero (Vista & 7) as well as support for custom themes. Themes are used depending on the operating system, although a theme can be set at compile and/or run time also.
 
-##Using the Control
+## Using the Control
 The control supports both XAML and code use.
 
 To use the control in XAML, add the dll as a reference in the project and add the following line to the top of your XAML file underneath the xmlns declarations
@@ -33,7 +33,7 @@ To add a child to the container, add an MdiChild control inside the MdiContainer
 <mdi:MdiContainer Theme="Aero">
     <mdi:MdiChild />
 </mdi:MdiContainer>
-```xml
+```
 
 Properties here which can be used are
 * Title (e.g. Title="Window 1")
@@ -45,14 +45,16 @@ Properties here which can be used are
 * Default FrameworkElement properties - Background, BorderBrush, Margin, Width, Height etc.
 
 For example, the following will set the title of the window to Window 1, prevent the user from resizing the window, disable the minimize button and make the background of the window dark gray
-{code:xml}
+
+```xml
 <mdi:MdiContainer Theme="Aero">
     <mdi:MdiChild Title="Window 1" Resizable="False" MinimizeBox="False" Background="DarkGray" />
 </mdi:MdiContainer>
-{code:xml}
+```
 
 Inside the MdiChild element you can specify content such as a custom made user control or create a grid and place all of your control inside the window
-{code:xml}
+
+```xml
 <mdi:MdiContainer Theme="Aero">
     <mdi:MdiChild Title="Window 1" Resizable="False" MinimizeBox="False" Background="DarkGray">
         <Grid>
@@ -62,22 +64,24 @@ Inside the MdiChild element you can specify content such as a custom made user c
         </Grid>
     </mdi:MdiChild>
 </mdi:MdiContainer>
-{code:xml}
+```
 
 To use code to create add windows, create your MdiContainer in the XAML as previously explained, name it something appropriate such as WindowContainer and use the Children list to add windows
-{code:c#}
+
+```csharp
 WindowContainer.Children.Add(new MdiChild()
 {
     Title = "Window 1"
 });
-{code:c#}
+```
 To add controls, use the Content property
-{code:c#}
+
+```csharp
 WindowContainer.Children.Add(new MdiChild()
 {
     Title = "Window 1",
     Content = new ExampleControl()
 });
-{code:c#}
+```
 
-For more examples, download the example application on the Downloads tab. Full documentation will be available shortly.
+For more examples, download the example application on the Downloads tab.
