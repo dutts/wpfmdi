@@ -1,5 +1,7 @@
 # WPF Multiple Document Interface (MDI)
 
+### [ Migrated from [CodePlex](https://wpfmdi.codeplex.com) 24th November 2017 ] 
+
 ## Project Description
 A library to add the traditional Windows Forms Multiple Document Interface (MDI) features to WPF. The aim is to resemble the original as much as possible.
 
@@ -84,4 +86,4 @@ WindowContainer.Children.Add(new MdiChild()
 });
 ```
 
-For more examples, download the example application on the Downloads tab.
+For more examples, check out the Examples folder in the repo.
