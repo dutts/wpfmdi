@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <!-- Identifier that must be unique within the hosting gallery -->
+    <id>$id$</id>
+
+    <!-- Package version number that is used when resolving dependencies -->
+    <version>$version$</version>
+    
+    <title>$title$</title>
+
+    <!-- Authors contain text that appears directly on the gallery -->
+    <authors>$author$</authors>
+
+    <!-- If true, this value prompts the user to accept the license when installing the package.  -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!-- License information is displayed on the gallery -->
+    <license type="expression">MIT</license>
+
+    <!-- Project URL provides a link for the gallery -->
+    <projectUrl>https://github.com/flamegreat/wpfmdi.git</projectUrl>
+
+    <!-- Icon is used in Visual Studio's package manager UI -->
+    <icon>images\icon.png</icon>
+    
+    <!-- The description can be used in package manager UI. Note that the nuget.org gallery uses information you add in the portal. -->
+    <description>$description$</description>
+    <releaseNotes>代码相较之前的版本没有任何变化，只是更新一些Nuget包信息。</releaseNotes>
+
+    <!-- Copyright information -->
+    <copyright>$copyright$</copyright>
+
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <tags>WPF MDI</tags>
+
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+      <group targetFramework=".NETFramework4.0-Client" />
+    </dependencies>
+  </metadata>
+
+  <!-- A readme.txt to display when the package is installed -->
+  <files>
+    <file src="icon.png" target="images\" />
+  </files>
+  
+</package>
