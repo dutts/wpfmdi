@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WPF.MDI")]
-[assembly: AssemblyDescription("http://wpfmdi.codeplex.com/")]
+[assembly: AssemblyDescription("A library to add the traditional Windows Forms Multiple Document Interface (MDI) features to WPF. The aim is to resemble the original as much as possible.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("xadet")]
+[assembly: AssemblyCompany("xadet,flames")]
 [assembly: AssemblyProduct("WPF.MDI")]
-[assembly: AssemblyCopyright("2009 xadet, 2010 stbear")]
+[assembly: AssemblyCopyright("2009 xadet, 2010 stbear, 2021 flames")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -25,5 +25,5 @@ using System.Windows;
     //(used if a resource is not found in the page, 
     // app, or any theme specific resource dictionaries)
 )]
-[assembly: AssemblyVersion("1.1.1.0")]
-[assembly: AssemblyFileVersion("1.1.1.0")]
+[assembly: AssemblyVersion("1.1.4.0")]
+[assembly: AssemblyFileVersion("1.1.4.0")]

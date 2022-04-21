@@ -338,9 +338,9 @@ namespace WPF.MDI
 						MdiChild mdiChild = Children[e.NewStartingIndex],
 							topChild = ActiveMdiChild;
 
+						mdiChild.Loaded += (s, a) => ActiveMdiChild = mdiChild;
 						if (topChild != null && topChild.WindowState == WindowState.Maximized)
 							mdiChild.Loaded += (s, a) => mdiChild.WindowState = WindowState.Maximized;
-						mdiChild.Loaded += (s, a) => ActiveMdiChild = mdiChild;
 
 						if (mdiChild.Position.X < 0 || mdiChild.Position.Y < 0)
 							mdiChild.Position = new Point(_windowOffset, _windowOffset);
